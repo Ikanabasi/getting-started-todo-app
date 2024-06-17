@@ -1,3 +1,12 @@
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+RUN yarn install -production
+CMD [ "node", "src/index.js" ]
+EXPOSE 3000
+
+
+
 ###################################################
 # Stage: base
 # 
@@ -90,3 +99,6 @@ COPY backend/src ./src
 COPY --from=client-build /usr/local/app/dist ./src/static
 EXPOSE 3000
 CMD ["node", "src/index.js"]
+
+
+
